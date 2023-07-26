@@ -1,0 +1,11 @@
+<h1><%= @season.title %></h1>
+
+<h2><%= @season.plot %></h2>
+
+<p>Creation: <%= @season.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+
+<h3>Episodes</h3>
+
+<% @season.episodes.each do |episode| %>
+  <p><%= episode.episode_number %>. <%= episode.title %></p>
+<% end %>

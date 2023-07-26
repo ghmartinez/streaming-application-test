@@ -1,21 +1,23 @@
 <h1>Seasons</h1>
-
 <p>
   Sort by:
   <%= link_to "Newest", seasons_path(sort: "newest") %>
   <%= link_to "Oldest", seasons_path(sort: "oldest") %>
 </p>
-
 <div class="row">
-  <% @seasons.each_with_index do |seasons, index| %>
+  <% @seasons.each_with_index do |season, index| %>
     <div class="col-lg-3 col-md-6">
-      <%= link_to seasons_path(seasons) do %>
-        <div class="movie">
+      <div class="content">
+        <%= link_to season_path(season) do %>
           <h2><%= index + 1 %>. <%= season.title %></h2>
           <p><%= season.plot %></p>
-          <p><%= season.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
-        </div>
-      <% end %>
+          <p>Creation: <%= season.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+        <% end %>
+        <h3>Episodes</h3>
+        <% season.episodes.each do |episode| %>
+          <p><%= episode.episode_number %>. <%= episode.title %></p>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
