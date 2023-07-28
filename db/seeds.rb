@@ -4,6 +4,7 @@ puts 'Cleaning database...'
 Movie.destroy_all
 Season.destroy_all
 Episode.destroy_all
+User.destroy_all
 
 puts 'Creating 50 fake movies...'
 50.times do
@@ -40,5 +41,14 @@ seasons.each do |season|
     episode.save!
     episode_number += 1
   end
+end
+puts 'Finished!'
+
+puts 'Creating 10 fake users...'
+10.times do
+  user = User.new(
+    email: Faker::Internet.email
+  )
+  user.save!
 end
 puts 'Finished!'

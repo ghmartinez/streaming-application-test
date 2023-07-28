@@ -3,3 +3,5 @@
 <h2><%= @movie.plot %></h2>
 
 <p>Creation: <%= @movie.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+
+<%= button_to "Buy", movie_purchases_path(movie_id: @movie.id), method: :post %>
