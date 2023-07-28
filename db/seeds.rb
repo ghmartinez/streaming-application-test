@@ -47,7 +47,8 @@ puts 'Finished!'
 puts 'Creating 10 fake users...'
 10.times do
   user = User.new(
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    password: '123456'
   )
   user.save!
 end

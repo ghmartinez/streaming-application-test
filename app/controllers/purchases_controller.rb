@@ -1,14 +1,20 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!
-
   def create
     @movie = Movie.find(params[:movie_id])
-    @purchase = @movie.purchases.new(user_id: current_user.id)
+    @purchase_options = @movie.purchase_options
 
-    if @purchase.save
-      redirect_to movie_path(@movie), notice: 'Purchase was successful.'
+    @purchase = current_user.purchases.new(purchase_params)
+
+    if @purchase_options.any? && @purchase.save
+      redirect_to @movie, notice: 'Purchase successful!'
     else
-      redirect_to movie_path(@movie), alert: 'Failed to create a purchase.'
+      redirect_to @movie, alert: 'Purchase failed!'
     end
+  end
+
+  private
+
+  def purchase_params
+    params.require(:purchase).permit(:purchase_option_id)
   end
 end

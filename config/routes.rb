@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: "pages#home"
 
   resources :movies, only: [:index, :show] do
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :seasons, only: [:index, :show]
+
+  resources :purchase_options, only: [:index]
 
   get '/contents', to: 'contents#index'
 end
