@@ -8,22 +8,22 @@
   <% @contents.each_with_index do |content, index| %>
     <div class="col-lg-3 col-md-6">
       <div class="content">
-        <% if content.is_a?(Movie) %>
-          <%= link_to movie_path(content) do %>
-            <h2><%= index + 1 %>. <%= content.title %></h2>
+        <% if content[:content].is_a?(Movie) %>
+          <%= link_to movie_path(content[:content]) do %>
+            <h2><%= index + 1 %>. <%= content[:content].title %></h2>
           <% end %>
-        <% elsif content.is_a?(Season) %>
-          <%= link_to season_path(content) do %>
-            <h2><%= index + 1 %>. <%= content.title %></h2>
+        <% elsif content[:content].is_a?(Season) %>
+          <%= link_to season_path(content[:content]) do %>
+            <h2><%= index + 1 %>. <%= content[:content].title %></h2>
             <h3>Episodes</h3>
-            <% content.episodes.each do |episode| %>
+            <% content[:content].episodes.each do |episode| %>
               <p><%= episode.episode_number %>. <%= episode.title %></p>
             <% end %>
           <% end %>
         <% end %>
-        <p><%= content.plot %></p>
-        <p>Creation: <%= content.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
-        <p>Content Type: <%= content.is_a?(Movie) ? "Movie" : "Season" %></p>
+        <p><%= content[:content].plot %></p>
+        <p>Creation: <%= content[:content].created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+        <p>Content Type: <%= content[:content].is_a?(Movie) ? "Movie" : "Season" %></p>
       </div>
     </div>
   <% end %>
