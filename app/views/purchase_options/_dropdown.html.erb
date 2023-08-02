@@ -1,4 +1,0 @@
-<%= form_with(model: @purchase, url: movie_purchases_path(@movie)) do |form| %>
-  <%= form.select :purchase_option_id, options_for_select(@purchase_options.map { |option| [option.video_quality, option.id] }) %>
-  <%= form.submit "Buy", class: "btn btn-primary" %>
-<% end %>

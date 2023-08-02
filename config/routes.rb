@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     resources :purchases, only: [:create]
   end
 
-  resources :seasons, only: [:index, :show]
+  resources :seasons, only: [:index, :show] do
+    resources :purchases, only: [:create]
+  end
+
+  resources :contents, only: [:index]
 
   resources :purchase_options, only: [:index]
-
-  get '/contents', to: 'contents#index'
 end

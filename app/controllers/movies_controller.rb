@@ -12,5 +12,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(id: params[:id])
+    @purchase_options = PurchaseOption.new(content: @movie, price: 2.99)
   end
 end

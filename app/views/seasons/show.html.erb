@@ -9,3 +9,5 @@
 <% @season.episodes.each do |episode| %>
   <p><%= episode.episode_number %>. <%= episode.title %></p>
 <% end %>
+
+<%= render "purchase_options/dropdown_seasons" %>

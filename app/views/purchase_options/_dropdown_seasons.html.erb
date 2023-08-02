@@ -1,0 +1,5 @@
+<%= form_with(model: @purchase, url: season_purchases_path(@season)) do |form| %>
+  <% options = [[PurchaseOption::HD, "HD"], [PurchaseOption::SD, "SD"]] %>
+  <%= form.select :purchase_option_id, options_for_select(options) %>
+  <%= form.submit "Buy", class: "btn btn-primary" %>
+<% end %>
